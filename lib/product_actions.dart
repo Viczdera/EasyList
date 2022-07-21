@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import './products.dart';
+import './product_control.dart';
 
 class ProductManager extends StatefulWidget {
   //adding constructor by repeating the class name
@@ -23,6 +24,13 @@ class _ProductManagerState extends State<ProductManager> {
     _products.add(widget.startingProduct);
   }
 
+  @override
+  void didUpdateWidget(covariant ProductManager oldWidget) {
+    // TODO: implement didUpdateWidget
+    print('[ProductManagerState didUpdateWidget(');
+    super.didUpdateWidget(oldWidget);
+  }
+
 //to be accessed only by the product manager widget. no one else should be able to access it
   void _addProduct(String product) {
     setState(() {
@@ -37,12 +45,7 @@ class _ProductManagerState extends State<ProductManager> {
       children: [
         Container(
           margin: EdgeInsets.all(10.0),
-          child: ElevatedButton(
-            onPressed: () {
-              _addProduct('Buttermilk');
-            },
-            child: Text('Add Product'),
-          ),
+          child: ProductControl(_addProduct),
         ),
         Products(_products)
       ],
