@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         ),
         home: Scaffold(
           appBar: AppBar(title: Text('EasyList')),
-          body: ProductManager(startingProduct: 'Food Tester'),
+          body: ProductManager(),
           // SizedBox(
           //   height: 24,
           // )
