@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './screens/product.dart';
 
 class Products extends StatelessWidget {
   //products property
@@ -12,7 +13,17 @@ class Products extends StatelessWidget {
     return Card(
       child: Column(children: <Widget>[
         Image.asset('assets/food.jpg'),
-        Text(products[index])
+        Text(products[index]),
+        ButtonBar(
+          children: <Widget>[
+            TextButton(
+                onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => ProductScreen())),
+                child: Text('Details'))
+          ],
+        )
       ]),
     );
   }

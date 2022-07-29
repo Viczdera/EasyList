@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import './product_actions.dart';
+import './screens/home.dart';
 
 void main() => runApp(MyApp());
 
@@ -22,13 +22,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.deepOrange,
           accentColor: Colors.blue,
         ),
-        home: Scaffold(
-          appBar: AppBar(title: Text('EasyList')),
-          body: ProductManager(),
-          // SizedBox(
-          //   height: 24,
-          // )
-        ));
+        home: HomeScreen());
   }
 }
 
