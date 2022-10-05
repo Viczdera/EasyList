@@ -3,7 +3,7 @@ import './screens/product.dart';
 
 class Products extends StatelessWidget {
   //products property
-  final List<String>
+  final List<Map<String, String>>
       products; //final==can't change. If data changed, it simply replaces it and call build again
   //constructor
   Products(this.products);
@@ -12,15 +12,18 @@ class Products extends StatelessWidget {
   Widget _buildProductItem(BuildContext context, int index) {
     return Card(
       child: Column(children: <Widget>[
-        Image.asset('assets/food.jpg'),
-        Text(products[index]),
+        Image.asset(products[index]['imageUrl'] ?? "No Image"),
+        Text(products[index]['title'] ?? "No title"),
         ButtonBar(
+          alignment: MainAxisAlignment.center,
           children: <Widget>[
             TextButton(
                 onPressed: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (BuildContext context) => ProductScreen())),
+                        builder: (BuildContext context) => ProductScreen(
+                            products[index]['title'] ?? "No title",
+                            products[index]['imageUrl'] ?? "No Image"))),
                 child: Text('Details'))
           ],
         )

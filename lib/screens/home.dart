@@ -11,7 +11,9 @@ class HomeScreen extends StatelessWidget {
     //widget is expected to be returned as a type
     return Scaffold(
       appBar: AppBar(title: Text('EasyList')),
-      body: ProductManager(),
+      body: ProductManager(
+        startingProduct: {'title': "Sausage", 'imageUrl': 'assets/food.jpg'},
+      ),
       // SizedBox(
       //   height: 24,
       // )
