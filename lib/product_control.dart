@@ -11,7 +11,7 @@ class ProductControl extends StatelessWidget {
     return ElevatedButton(
         style: ButtonStyle(),
         onPressed: () {
-          addProduct('Sausage');
+          addProduct({'title': "Sausage", 'imageUrl': 'assets/food.jpg'});
         },
         child: Text('Add Product'));
   }
