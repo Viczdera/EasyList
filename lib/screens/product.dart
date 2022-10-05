@@ -28,8 +28,9 @@ class ProductScreen extends StatelessWidget {
               Container(
                 padding: EdgeInsets.all(10.0),
                 child: ElevatedButton(
-                    onPressed: () => Navigator.pop(context),
-                    child: Text('Back')),
+                    onPressed: () => Navigator.pop(context, true),
+                    child: Text('Remove')),
+                //TODO:use ioon instead
               )
             ],
           ),

@@ -3,10 +3,11 @@ import './screens/product.dart';
 
 class Products extends StatelessWidget {
   //products property
-  final List<Map<String, String>>
-      products; //final==can't change. If data changed, it simply replaces it and call build again
+  final List<Map<String, String>> products;
+  final Function
+      deleteProduct; //final==can't change. If data changed, it simply replaces it and call build again
   //constructor
-  Products(this.products);
+  Products(this.products, {required this.deleteProduct});
 
 // //reference a method of  class
   Widget _buildProductItem(BuildContext context, int index) {
@@ -18,12 +19,20 @@ class Products extends StatelessWidget {
           alignment: MainAxisAlignment.center,
           children: <Widget>[
             TextButton(
-                onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (BuildContext context) => ProductScreen(
-                            products[index]['title'] ?? "No title",
-                            products[index]['imageUrl'] ?? "No Image"))),
+                onPressed: () => Navigator.push<bool>(
+                        context,
+                        MaterialPageRoute(
+                            builder: (BuildContext context) => ProductScreen(
+                                products[index]['title'] ?? "No title",
+                                products[index]['imageUrl'] ?? "No Image")))
+                    .then((bool? value) => {
+                          print(value),
+                          if (value == true)
+                            {
+                              deleteProduct(index),
+                              print('product ${index} deleted')
+                            }
+                        }),
                 child: Text('Details'))
           ],
         )
