@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+//for will Future method since its async
+import 'dart:async';
 
 class ProductScreen extends StatelessWidget {
   @override //tell dart we're deliberately overriding a method defined by the Stateless widget
@@ -13,31 +15,39 @@ class ProductScreen extends StatelessWidget {
   ProductScreen(this.title, this.imageUrl);
   Widget build(context) {
     //widget is expected to be returned as a type
-    return Scaffold(
-        appBar: AppBar(title: Text(title)),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            //  crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Image.asset(imageUrl),
-              Container(
-                padding: EdgeInsets.all(10.0),
-                child: Text(title),
+
+    return WillPopScope(
+        onWillPop: () {
+          //to pass data back
+          Navigator.pop(context, false);
+          //to go back
+          return Future.value(true);
+        },
+        child: Scaffold(
+            appBar: AppBar(title: Text(title)),
+            body: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                //  crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Image.asset(imageUrl),
+                  Container(
+                    padding: EdgeInsets.all(10.0),
+                    child: Text(title),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(10.0),
+                    child: ElevatedButton(
+                        onPressed: () => Navigator.pop(context, true),
+                        child: Text('Remove')),
+                    //TODO:use ioon instead
+                  )
+                ],
               ),
-              Container(
-                padding: EdgeInsets.all(10.0),
-                child: ElevatedButton(
-                    onPressed: () => Navigator.pop(context, true),
-                    child: Text('Remove')),
-                //TODO:use ioon instead
-              )
-            ],
-          ),
-        )
-        // SizedBox(
-        //   height: 24,
-        // )
-        );
+            )
+            // SizedBox(
+            //   height: 24,
+            // )
+            ));
   }
 }

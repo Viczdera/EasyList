@@ -27,7 +27,7 @@ class Products extends StatelessWidget {
                                 products[index]['imageUrl'] ?? "No Image")))
                     .then((bool? value) => {
                           print(value),
-                          if (value == true)
+                          if (value!)
                             {
                               deleteProduct(index),
                               print('product ${index} deleted')
