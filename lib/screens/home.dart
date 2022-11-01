@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../product_actions.dart';
+import 'manage_products.dart';
 
 class HomeScreen extends StatelessWidget {
   @override //tell dart we're deliberately overriding a method defined by the Stateless widget
@@ -10,6 +11,25 @@ class HomeScreen extends StatelessWidget {
   Widget build(context) {
     //widget is expected to be returned as a type
     return Scaffold(
+      drawer: Drawer(
+          child: Column(
+        children: <Widget>[
+          AppBar(
+            title: Text('Menu'),
+            //disable icon when bar is open
+            automaticallyImplyLeading: false,
+          ),
+          ListTile(
+            title: Text('Manage Product'),
+            onTap: () {
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => ManageProductsPage()));
+            },
+          )
+        ],
+      )),
       appBar: AppBar(title: Text('EasyList')),
       body: ProductManager(),
       // SizedBox(
