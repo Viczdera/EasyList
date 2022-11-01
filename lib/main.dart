@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import './screens/home.dart';
+import './screens/auth.dart';
 
 void main() => runApp(MyApp());
 
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.deepOrange,
           accentColor: Colors.blue,
         ),
-        home: HomeScreen());
+        home: AuthScreen());
   }
 }
 
